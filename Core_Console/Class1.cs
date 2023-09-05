@@ -5,6 +5,31 @@ namespace Core_Console;
 
 public class Class1
 {
+    public void TestMethod()
+    {
+        var result = new List<int>();
+        for (int i = 0; i < 10; i++)
+        {
+            if (i == 5)
+            {
+                continue;
+            }
+
+            result.Add(i);
+        }
+    }
+
+    public async Task TestAsync()
+    {
+        await using IAsyncDisposable asyncDisposableNumberOne = null, 
+            asyncDisposableNumberTwo = null;
+        await Task.Delay(10);
+        Console.WriteLine(asyncDisposableNumberOne);
+        Console.WriteLine(asyncDisposableNumberTwo);
+
+    }
+
+
     public void Test(List<int> list, bool b, object input)
     {
         Console.WriteLine("Hello, World!");
