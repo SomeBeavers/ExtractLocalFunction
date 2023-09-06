@@ -1,4 +1,4 @@
-﻿Console.WriteLine("Hello, World!");
-int t = 1;
+﻿using System;
 
-Console.WriteLine(t);
+Console.WriteLine("GetString()");
+Console.WriteLine();    
