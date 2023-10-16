@@ -4,8 +4,25 @@ using System.Drawing;
 
 namespace Core_Console;
 
-public class PutInDifferentPlaces
+public class PutInDifferentPlaces<T>
 {
+    public string Name
+    {
+        get => _name;
+        set { _name = value; }
+    }
+
+    public List<T>? List;
+    private string _name;
+
+    public PutInDifferentPlaces(int count)
+    {
+        List = new List<T>();
+        Count = count;
+
+        List.Where(x => x != null);
+    }
+
     public int Count { get; set; }
 
     public void Test(Person person)
@@ -22,20 +39,6 @@ public class PutInDifferentPlaces
 
 public record UsePutInDifferentPlaces(string Name = "")
 {
-    public static Color GetEntityColorAbs()
-    {
-        var color = ent.Color;
-        if (color.IsByLayer)
-        {
-            var layer = ent.LayerId.GetObject<LayerTableRecord>();
-            if (layer == null)
-                return color;
-            color = layer.Color;
-        }
-
-        return color;
-    }
-
     public void Test(MyEnum myEnum, bool condition, List<Person> list)
     {
         switch (condition)
@@ -70,8 +73,6 @@ public record UsePutInDifferentPlaces(string Name = "")
         list.Where(predicate: x => x.Name.Length != 0);
 
         // comment 2
-
-        
     }
 }
 
@@ -85,4 +86,19 @@ public enum MyEnum
 public class Person
 {
     public string? Name { get; set; }
+}
+
+public static class StaticClass
+{
+    public static Color GetEntityColorAbs(this string name)
+    {
+        if (name == "blue")
+        {
+            return Color.Blue;
+        }
+        else
+            return Color.Red;
+
+        return Color.Green;
+    }
 }

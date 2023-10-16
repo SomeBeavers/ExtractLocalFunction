@@ -26,6 +26,8 @@ public class Class1
         await Task.Delay(10);
         Console.WriteLine(asyncDisposableNumberOne);
         Console.WriteLine(asyncDisposableNumberTwo);
+        Console.WriteLine("Hello, World!");
+
 
     }
 
